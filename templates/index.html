@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wage Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+
+        .roles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .role-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .role-item input {
+            margin-right: 10px;
+            width: auto;
+        }
+
+        .role-item label {
+            margin-bottom: 0;
+            display: inline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>Wage Calculator</h1>
+<form method="POST">
+
+    <h3>Βασικές Πληροφορίες</h3>
+    <div class="form-group">
+        <label for="company_hq">Έδρα Εταιρείας:</label>
+        <select name="company_hq" id="company_hq">
+            {% for label, value in company_hq.items() %}
+            <option value="{{ value }}">{{ label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="way_of_working">Τρόπος Εργασίας:</label>
+        <select name="way_of_working" id="way_of_working">
+            {% for label, value in way_of_working.items() %}
+            <option value="{{ value }}">{{ label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="company_size">Μέγεθος Εταιρείας:</label>
+        <select name="company_size" id="company_size">
+            {% for label, value in company_size.items() %}
+            <option value="{{ value }}">{{ label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="education">Εκπαίδευση:</label>
+        <select name="education" id="education">
+            {% for label, value in education.items() %}
+            <option value="{{ value }}">{{ label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="gender">Φύλο:</label>
+        <select name="gender" id="gender">
+            {% for label, value in gender.items() %}
+            <option value="{{ value }}">{{ label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="team_leader">Team Leader:</label>
+        <select name="team_leader" id="team_leader">
+            {% for label, value in team_leader.items() %}
+            <option value="{{ value }}">{{ label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <h3>Ρόλοι (AI / ML, Backend, κλπ):</h3>
+        <div class="roles-container">
+            {% for role in job_roles %}
+            <div class="role-item">
+                <input type="checkbox" name="job_roles" value="{{ role }}" id="role_{{ loop.index }}">
+                <label for="role_{{ loop.index }}">{{ role }}</label>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h3>Τεχνολογίες (Python, React, κλπ):</h3>
+        <div class="roles-container">
+            {% for tech in technologies %}
+            <div class="role-item">
+                <input type="checkbox" name="technologies" value="{{ tech }}" id="tech_{{ loop.index }}">
+                <label for="tech_{{ loop.index }}">{{ tech }}</label>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <button type="submit">Υπολογισμός</button>
+
+</form>
+
+{% if result %}
+<div class="result">
+    {{ result }}
+</div>
+{% endif %}
+</body>
+</html>
