@@ -22,6 +22,7 @@ class FlaskTestCase(unittest.TestCase):
             'education': '0',
             'gender': '0',
             'team_leader': '0',
+            'experience': '5',
             'job_roles': ['AI / ML', 'Backend'],
             'technologies': ['Python', 'React']
         })
