@@ -2,6 +2,12 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+def calculate_wage(data):
+    import joblib
+
+    model = joblib.load("income_model.pkl")
+    imputer = joblib.load("imputer.pkl")
+
 company_hq = {
     "Αθήνα": 0,
     "Θεσσαλονίκη": 1,
