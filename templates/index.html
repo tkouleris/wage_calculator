@@ -83,7 +83,7 @@
         <label for="company_hq">Έδρα Εταιρείας:</label>
         <select name="company_hq" id="company_hq">
             {% for label, value in company_hq.items() %}
-            <option value="{{ value }}">{{ label }}</option>
+            <option value="{{ value }}" {% if data and data['company_hq']|string == value|string %}selected{% endif %}>{{ label }}</option>
             {% endfor %}
         </select>
     </div>
@@ -92,7 +92,7 @@
         <label for="way_of_working">Τρόπος Εργασίας:</label>
         <select name="way_of_working" id="way_of_working">
             {% for label, value in way_of_working.items() %}
-            <option value="{{ value }}">{{ label }}</option>
+            <option value="{{ value }}" {% if data and data['way_of_working']|string == value|string %}selected{% endif %}>{{ label }}</option>
             {% endfor %}
         </select>
     </div>
@@ -101,7 +101,7 @@
         <label for="company_size">Μέγεθος Εταιρείας:</label>
         <select name="company_size" id="company_size">
             {% for label, value in company_size.items() %}
-            <option value="{{ value }}">{{ label }}</option>
+            <option value="{{ value }}" {% if data and data['company_size']|string == value|string %}selected{% endif %}>{{ label }}</option>
             {% endfor %}
         </select>
     </div>
@@ -110,7 +110,7 @@
         <label for="education">Εκπαίδευση:</label>
         <select name="education" id="education">
             {% for label, value in education.items() %}
-            <option value="{{ value }}">{{ label }}</option>
+            <option value="{{ value }}" {% if data and data['education']|string == value|string %}selected{% endif %}>{{ label }}</option>
             {% endfor %}
         </select>
     </div>
@@ -119,7 +119,7 @@
         <label for="gender">Φύλο:</label>
         <select name="gender" id="gender">
             {% for label, value in gender.items() %}
-            <option value="{{ value }}">{{ label }}</option>
+            <option value="{{ value }}" {% if data and data['gender']|string == value|string %}selected{% endif %}>{{ label }}</option>
             {% endfor %}
         </select>
     </div>
@@ -128,14 +128,14 @@
         <label for="team_leader">Team Leader:</label>
         <select name="team_leader" id="team_leader">
             {% for label, value in team_leader.items() %}
-            <option value="{{ value }}">{{ label }}</option>
+            <option value="{{ value }}" {% if data and data['team_leader']|string == value|string %}selected{% endif %}>{{ label }}</option>
             {% endfor %}
         </select>
     </div>
 
     <div class="form-group">
         <label for="experience">Εμπειρία (χρόνια):</label>
-        <input type="number" step="1" name="experience" id="experience" min="0" max="50" value="0" required>
+        <input type="number" step="1" name="experience" id="experience" min="0" max="50" value="{% if data %}{{ data['experience'] }}{% else %}0{% endif %}" required>
     </div>
 
     <div class="form-group">
@@ -143,7 +143,7 @@
         <div class="roles-container">
             {% for role in job_roles %}
             <div class="role-item">
-                <input type="checkbox" name="job_roles" value="{{ role }}" id="role_{{ loop.index }}">
+                <input type="checkbox" name="job_roles" value="{{ role }}" id="role_{{ loop.index }}" {% if data and data[role] == 1 %}checked{% endif %}>
                 <label for="role_{{ loop.index }}">{{ role }}</label>
             </div>
             {% endfor %}
@@ -155,7 +155,7 @@
         <div class="roles-container">
             {% for tech in technologies %}
             <div class="role-item">
-                <input type="checkbox" name="technologies" value="{{ tech }}" id="tech_{{ loop.index }}">
+                <input type="checkbox" name="technologies" value="{{ tech }}" id="tech_{{ loop.index }}" {% if data and data[tech] == 1 %}checked{% endif %}>
                 <label for="tech_{{ loop.index }}">{{ tech }}</label>
             </div>
             {% endfor %}
