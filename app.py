@@ -72,7 +72,11 @@ technologies = [
     "Vue", "Wordpress", "X++", "YAML"
 ]
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
+def landing():
+    return render_template('landing.html')
+
+@app.route('/calculator', methods=['GET', 'POST'])
 def index():
     result = None
     data = None

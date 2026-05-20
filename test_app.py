@@ -6,16 +6,20 @@ class FlaskTestCase(unittest.TestCase):
         app.config['TESTING'] = True
         self.app = app.test_client()
 
-    def test_index_loads(self):
+    def test_landing_loads(self):
         response = self.app.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'Wage Calculator', response.data)
+        self.assertIn('Εκτίμηση Καθαρού Μισθού Προγραμματιστών'.encode('utf-8'), response.data)
+
+    def test_calculator_loads(self):
+        response = self.app.get('/calculator')
+        self.assertEqual(response.status_code, 200)
         # Check if some Greek labels are present
         self.assertIn('Έδρα Εταιρείας'.encode('utf-8'), response.data)
         self.assertIn('Αθήνα'.encode('utf-8'), response.data)
 
     def test_form_submission(self):
-        response = self.app.post('/', data={
+        response = self.app.post('/calculator', data={
             'company_hq': '0',
             'way_of_working': '0',
             'company_size': '0',
@@ -27,7 +31,7 @@ class FlaskTestCase(unittest.TestCase):
             'technologies': ['Python', 'React']
         })
         self.assertEqual(response.status_code, 200)
-        self.assertIn("Εκτιμώμενος Μισθός".encode('utf-8'), response.data)
+        self.assertIn("Εκτιμώμενος Καθαρός Μισθός".encode('utf-8'), response.data)
 
 if __name__ == '__main__':
     unittest.main()
