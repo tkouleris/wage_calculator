@@ -65,7 +65,7 @@ technologies = [
     "ABAP", "AL", "Angular", "Apex", "Assembly", "Bash", "Bootstrap", "C", "C#",
     "C++", "C/AL", "CSS", "Cobol", "Dart", "Delphi", "FORTRAN", "Flutter", "Go",
     "Groovy", "HCL", "HTML", "Java", "JavaScript", "Kotlin", "Kubernetes",
-    "LaTeX", "MySQL", "Node", "NodeJS", "Objective-C", "PHP", "PL/SQL", "Perl",
+    "LaTeX", "MySQL", "Node", "Objective-C", "PHP", "PL/SQL", "Perl",
     "PostgreSQL", "PowerBuilder", "Python", "R", "React", "React Native",
     "Ruby", "Rust", "SAS", "SQL", "Scala", "Solidity", "Swift", "SystemVerilog",
     "T-SQL", "TCL", "Terraform", "TypeScript", "VB.NET", "VHDL", "Visual Basic",

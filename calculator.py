@@ -87,7 +87,6 @@ def calculate_wage(data):
         "LaTeX": data["LaTeX"],
         "MySQL": data["MySQL"],
         "Node": data["Node"],
-        "NodeJS": data["NodeJS"],
         "Objective-C": data["Objective-C"],
         "PHP": data["PHP"],
         "PL/SQL": data["PL/SQL"],
