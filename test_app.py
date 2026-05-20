@@ -27,7 +27,7 @@ class FlaskTestCase(unittest.TestCase):
             'technologies': ['Python', 'React']
         })
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'Selection received!', response.data)
+        self.assertIn("Εκτιμώμενος Μισθός".encode('utf-8'), response.data)
 
 if __name__ == '__main__':
     unittest.main()
