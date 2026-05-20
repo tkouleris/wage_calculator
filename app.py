@@ -76,6 +76,7 @@ technologies = [
 def index():
     result = None
     data = None
+    wage_prediction = None
     if request.method == 'POST':
         # Collect values (just for demonstration as no formula was provided)
         data = {
@@ -101,7 +102,7 @@ def index():
 
         result = "Selection received! (Calculation logic not defined yet)"
         try:
-            calculate_wage(data)
+            wage_prediction = calculate_wage(data)
         except Exception as e:
             print(f"Error in calculation: {e}")
     return render_template('index.html',
@@ -114,6 +115,7 @@ def index():
                            team_leader=team_leader,
                            job_roles=job_roles,
                            technologies=technologies,
+                           wage_prediction=wage_prediction,
                            result=result)
 
 if __name__ == '__main__':

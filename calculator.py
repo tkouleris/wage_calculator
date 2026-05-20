@@ -6,7 +6,7 @@ def calculate_wage(data):
     path = os.path.join("model", "v1")
     model = joblib.load(os.path.join(path, "income_model.pkl"))
     imputer = joblib.load(os.path.join(path, "imputer.pkl"))
-    print(data)
+
     input_data = {
         "Company HQ": data['company_hq'],
         "Company Size": data['company_size'],
@@ -124,5 +124,4 @@ def calculate_wage(data):
 
     prediction = model.predict(new_data)
 
-    print("Predicted Yearly Income:", prediction[0])
-    print("Monthly Income:", prediction[0] / 14)
+    return (prediction[0] / 14)
